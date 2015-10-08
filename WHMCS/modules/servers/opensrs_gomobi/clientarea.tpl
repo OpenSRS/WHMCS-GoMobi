@@ -1,5 +1,5 @@
 {php}##################DO NOT EDIT BELOW THIS LINE#############################
-$_template_dir = $this->template_dir;
+$_template_dir = $template->joined_template_dir;
 $_maindir = substr($_template_dir, 0 , strpos($_template_dir, DIRECTORY_SEPARATOR.'templates')).DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'servers'.DIRECTORY_SEPARATOR.'opensrs_gomobi'.DIRECTORY_SEPARATOR;
 
 if(!file_exists($_maindir.'clientarea_controller.php'))

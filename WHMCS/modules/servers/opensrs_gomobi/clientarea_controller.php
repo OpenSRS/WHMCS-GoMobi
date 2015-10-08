@@ -47,10 +47,18 @@ if(function_exists('mysql_safequery') == false) {
 
 //load language
 $_LANG = opensrs_gomobi_loadLanguage();
+/*
 $this->assign('lang',  $_LANG);
+*/
+/* Changes added on 07/10/2015 : Changes accoriding to Smarty 3 for whmcs6 compatibility*/
+$template->assign('lang',  $_LANG);
+/* END */
 
 //prepare connecting data
-$template_vars = $this->get_template_vars();
+//$template_vars = $this->get_template_vars();
+/* Changes added on 07/10/2015 : Changes accoriding to Smarty 3 for whmcs6 compatibility*/
+$template_vars = $template->get_template_vars();
+/* END */
 $params = array
 (
     'accountid'      =>  $template_vars['accountid'],
@@ -65,7 +73,7 @@ $params = array
 );
 
 //managing aliases is enabled?
-$this->assign('alias_management', $params['configoption4']);
+$template->assign('alias_management', $params['configoption4']);
 
 //do something with user request
 $ret = null;
@@ -114,7 +122,7 @@ switch($_REQUEST['modaction'])
         }
     break;
 }
- 
+   
 
 $attr = opensrs_gomobi_ServiceInfo($params);
 
@@ -143,6 +151,9 @@ if(isset($ret['message']) && $ret['message'])// Are we have any info?
 
 foreach($vars as $key => $var)
 {
-    $this->assign($key, $var);
+    //$this->assign($key, $var);
+    /* Changes added on 07/10/2015 : Changes accoriding to Smarty 3 for whmcs6 compatibility*/
+    $template->assign($key, $var);
+    /* END */
 }
 ?>
